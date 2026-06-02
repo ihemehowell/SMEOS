@@ -1,0 +1,76 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id           String       @id @default(cuid())
+  name         String
+  email        String       @unique
+  passwordHash String
+
+  memberships  Membership[]
+
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+}
+
+model Organization {
+  id       String  @id @default(cuid())
+  name     String
+  slug     String  @unique
+  currency String  @default("NGN")
+  timezone String  @default("Africa/Lagos")
+
+  memberships Membership[]
+  customers   Customer[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Membership {
+  id             String @id @default(cuid())
+  userId         String
+  organizationId String
+  role           Role
+
+  user         User         @relation(fields: [userId], references: [id])
+  organization Organization @relation(fields: [organizationId], references: [id])
+
+  createdAt DateTime @default(now())
+
+  @@unique([userId, organizationId])
+  @@index([organizationId])
+  @@index([userId])
+}
+
+model Customer {
+  id             String       @id @default(cuid())
+  organizationId String
+  organization   Organization @relation(fields: [organizationId], references: [id])
+
+  name     String
+  email    String?
+  phone    String?
+  address  String?
+  notes    String?
+
+  deletedAt DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([organizationId])
+  @@index([organizationId, deletedAt])
+}
+
+enum Role {
+  OWNER
+  ADMIN
+  MEMBER
+}
