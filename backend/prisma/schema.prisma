@@ -28,6 +28,9 @@ model Organization {
 
   memberships Membership[]
   customers   Customer[]
+  quotations  Quotation[]
+  invoices    Invoice[]
+  expenses    Expense[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -60,12 +63,127 @@ model Customer {
   address  String?
   notes    String?
 
+  quotations Quotation[]
+  invoices   Invoice[]
+
   deletedAt DateTime?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  @@index([organizationId])
+  @@index([organizationId, deletedAt])
+}
+
+model Quotation {
+  id             String          @id @default(cuid())
+  organizationId String
+  organization   Organization    @relation(fields: [organizationId], references: [id])
+  customerId     String?
+  customer       Customer?       @relation(fields: [customerId], references: [id])
+
+  number     Int
+  status     QuotationStatus @default(DRAFT)
+  issueDate  DateTime        @default(now())
+  expiryDate DateTime?
+  notes      String?
+  subtotal   Int             @default(0)
+  tax        Int             @default(0)
+  total      Int             @default(0)
+
+  items    QuotationItem[]
+  invoices Invoice[]
+
+  deletedAt DateTime?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  @@unique([organizationId, number])
+  @@index([organizationId])
+  @@index([organizationId, status])
+  @@index([organizationId, deletedAt])
+}
+
+model QuotationItem {
+  id          String    @id @default(cuid())
+  quotationId String
+  quotation   Quotation @relation(fields: [quotationId], references: [id], onDelete: Cascade)
+
+  description String
+  quantity    Int
+  unitPrice   Int
+  total       Int
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
+  @@index([quotationId])
+}
+
+model Invoice {
+  id             String        @id @default(cuid())
+  organizationId String
+  organization   Organization  @relation(fields: [organizationId], references: [id])
+  customerId     String?
+  customer       Customer?     @relation(fields: [customerId], references: [id])
+  quotationId    String?
+  quotation      Quotation?    @relation(fields: [quotationId], references: [id])
+
+  number    Int
+  status    InvoiceStatus @default(UNPAID)
+  issueDate DateTime      @default(now())
+  dueDate   DateTime?
+  notes     String?
+  subtotal  Int           @default(0)
+  tax       Int           @default(0)
+  total     Int           @default(0)
+  paidAt    DateTime?
+
+  items InvoiceItem[]
+
+  deletedAt DateTime?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  @@unique([organizationId, number])
   @@index([organizationId])
+  @@index([organizationId, status])
+  @@index([organizationId, deletedAt])
+}
+
+model InvoiceItem {
+  id        String  @id @default(cuid())
+  invoiceId String
+  invoice   Invoice @relation(fields: [invoiceId], references: [id], onDelete: Cascade)
+
+  description String
+  quantity    Int
+  unitPrice   Int
+  total       Int
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([invoiceId])
+}
+
+model Expense {
+  id             String       @id @default(cuid())
+  organizationId String
+  organization   Organization @relation(fields: [organizationId], references: [id])
+
+  description String
+  category    ExpenseCategory
+  amount      Int
+  date        DateTime        @default(now())
+  notes       String?
+
+  deletedAt DateTime?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  @@index([organizationId])
+  @@index([organizationId, category])
+  @@index([organizationId, date])
   @@index([organizationId, deletedAt])
 }
 
@@ -73,4 +191,32 @@ enum Role {
   OWNER
   ADMIN
   MEMBER
+}
+
+enum QuotationStatus {
+  DRAFT
+  SENT
+  ACCEPTED
+  REJECTED
+  EXPIRED
+}
+
+enum InvoiceStatus {
+  UNPAID
+  PAID
+  OVERDUE
+  CANCELLED
+}
+
+enum ExpenseCategory {
+  SALARIES
+  RENT
+  UTILITIES
+  MARKETING
+  EQUIPMENT
+  TRAVEL
+  SOFTWARE
+  PROFESSIONAL_SERVICES
+  TAXES
+  OTHER
 }

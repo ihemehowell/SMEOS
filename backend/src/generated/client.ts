@@ -61,3 +61,28 @@ export type Membership = Prisma.MembershipModel
  * 
  */
 export type Customer = Prisma.CustomerModel
+/**
+ * Model Quotation
+ * 
+ */
+export type Quotation = Prisma.QuotationModel
+/**
+ * Model QuotationItem
+ * 
+ */
+export type QuotationItem = Prisma.QuotationItemModel
+/**
+ * Model Invoice
+ * 
+ */
+export type Invoice = Prisma.InvoiceModel
+/**
+ * Model InvoiceItem
+ * 
+ */
+export type InvoiceItem = Prisma.InvoiceItemModel
+/**
+ * Model Expense
+ * 
+ */
+export type Expense = Prisma.ExpenseModel

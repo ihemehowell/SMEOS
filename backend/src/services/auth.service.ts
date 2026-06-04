@@ -33,6 +33,15 @@ export async function registerUser(input: RegisterInput) {
       email: true,
       createdAt: true,
       updatedAt: true,
+      memberships: {
+        select: {
+          id: true,
+          role: true,
+          organization: {
+            select: { id: true, name: true, slug: true },
+          },
+        },
+      },
     },
   });
 
@@ -57,14 +66,28 @@ export async function loginUser(input: LoginInput) {
     throw new HttpError(401, "Invalid email or password", "INVALID_CREDENTIALS");
   }
 
-  return {
-    user: {
-      id: user.id,
-      name: user.name,
-      email: user.email,
-      createdAt: user.createdAt,
-      updatedAt: user.updatedAt,
+  const fullUser = await prisma.user.findUnique({
+    where: { id: user.id },
+    select: {
+      id: true,
+      name: true,
+      email: true,
+      createdAt: true,
+      updatedAt: true,
+      memberships: {
+        select: {
+          id: true,
+          role: true,
+          organization: {
+            select: { id: true, name: true, slug: true },
+          },
+        },
+      },
     },
+  });
+
+  return {
+    user: fullUser!,
     token: createToken(user.id),
   };
 }

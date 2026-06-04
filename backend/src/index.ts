@@ -5,7 +5,11 @@ import { env } from "./config/env.js";
 import { authRouter } from "./routes/auth.routes.js";
 import { organizationRouter } from "./routes/organization.routes.js";
 import { customerRouter } from "./routes/customer.routes.js";
+import { quotationRouter } from "./routes/quotation.routes.js";
+import { invoiceRouter } from "./routes/invoice.routes.js";
+import { statsRouter } from "./routes/stats.routes.js";
 import { errorMiddleware } from "./middleware/error.middleware.js";
+import { expenseRouter } from "./routes/expence.routes.js";
 
 const app = express();
 const port = env.PORT;
@@ -24,6 +28,10 @@ app.get("/api/v1/health", (_request, response) => {
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/organizations", organizationRouter);
 app.use("/api/v1/organizations/:organizationId/customers", customerRouter);
+app.use("/api/v1/organizations/:organizationId/quotations", quotationRouter);
+app.use("/api/v1/organizations/:organizationId/invoices", invoiceRouter);
+app.use("/api/v1/organizations/:organizationId/expenses", expenseRouter);
+app.use("/api/v1/organizations/:organizationId/stats", statsRouter);
 
 app.use("/api/v1", (_request, response) => {
   response.json({ message: "Backend is running", service: "Express API" });

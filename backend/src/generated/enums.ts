@@ -16,3 +16,40 @@ export const Role = {
 } as const
 
 export type Role = (typeof Role)[keyof typeof Role]
+
+
+export const QuotationStatus = {
+  DRAFT: 'DRAFT',
+  SENT: 'SENT',
+  ACCEPTED: 'ACCEPTED',
+  REJECTED: 'REJECTED',
+  EXPIRED: 'EXPIRED'
+} as const
+
+export type QuotationStatus = (typeof QuotationStatus)[keyof typeof QuotationStatus]
+
+
+export const InvoiceStatus = {
+  UNPAID: 'UNPAID',
+  PAID: 'PAID',
+  OVERDUE: 'OVERDUE',
+  CANCELLED: 'CANCELLED'
+} as const
+
+export type InvoiceStatus = (typeof InvoiceStatus)[keyof typeof InvoiceStatus]
+
+
+export const ExpenseCategory = {
+  SALARIES: 'SALARIES',
+  RENT: 'RENT',
+  UTILITIES: 'UTILITIES',
+  MARKETING: 'MARKETING',
+  EQUIPMENT: 'EQUIPMENT',
+  TRAVEL: 'TRAVEL',
+  SOFTWARE: 'SOFTWARE',
+  PROFESSIONAL_SERVICES: 'PROFESSIONAL_SERVICES',
+  TAXES: 'TAXES',
+  OTHER: 'OTHER'
+} as const
+
+export type ExpenseCategory = (typeof ExpenseCategory)[keyof typeof ExpenseCategory]

@@ -1,15 +1,35 @@
 import { prisma } from "../lib/prisma.js";
 import { HttpError } from "../lib/http-error.js";
 import type { CustomerCreateInput, CustomerUpdateInput } from "@smeo/shared";
+import type { PaginationQueryInput } from "@smeo/shared";
+import { buildPaginationMeta, getPaginationArgs, type PaginatedResult } from "../lib/pagination.js";
 
-export async function listCustomers(organizationId: string) {
-  return prisma.customer.findMany({
-    where: {
-      organizationId,
-      deletedAt: null,
-    },
-    orderBy: { createdAt: "desc" },
-  });
+type CustomerListItem = Awaited<ReturnType<typeof prisma.customer.findMany>>[number];
+
+export async function listCustomers(
+  organizationId: string,
+  pagination: PaginationQueryInput,
+): Promise<PaginatedResult<CustomerListItem>> {
+  const where = {
+    organizationId,
+    deletedAt: null,
+  };
+
+  const { page, limit } = pagination;
+
+  const [total, customers] = await prisma.$transaction([
+    prisma.customer.count({ where }),
+    prisma.customer.findMany({
+      where,
+      orderBy: { createdAt: "desc" },
+      ...getPaginationArgs(page, limit),
+    }),
+  ]);
+
+  return {
+    items: customers,
+    pagination: buildPaginationMeta(total, page, limit),
+  };
 }
 
 export async function getCustomer(organizationId: string, customerId: string) {

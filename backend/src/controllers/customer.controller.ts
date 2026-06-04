@@ -4,6 +4,7 @@ import {
   customerUpdateSchema,
   customerParamsSchema,
   customerOrgParamsSchema,
+  paginationQuerySchema,
 } from "@smeo/shared";
 import {
   listCustomers,
@@ -15,8 +16,9 @@ import {
 
 export async function list(request: Request, response: Response) {
   const { organizationId } = customerOrgParamsSchema.parse(request.params);
-  const customers = await listCustomers(organizationId);
-  response.json({ customers });
+  const pagination = paginationQuerySchema.parse(request.query);
+  const result = await listCustomers(organizationId, pagination);
+  response.json({ customers: result.items, pagination: result.pagination });
 }
 
 export async function getById(request: Request, response: Response) {

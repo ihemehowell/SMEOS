@@ -200,6 +200,9 @@ export type OrganizationWhereInput = {
   updatedAt?: Prisma.DateTimeFilter<"Organization"> | Date | string
   memberships?: Prisma.MembershipListRelationFilter
   customers?: Prisma.CustomerListRelationFilter
+  quotations?: Prisma.QuotationListRelationFilter
+  invoices?: Prisma.InvoiceListRelationFilter
+  expenses?: Prisma.ExpenseListRelationFilter
 }
 
 export type OrganizationOrderByWithRelationInput = {
@@ -212,6 +215,9 @@ export type OrganizationOrderByWithRelationInput = {
   updatedAt?: Prisma.SortOrder
   memberships?: Prisma.MembershipOrderByRelationAggregateInput
   customers?: Prisma.CustomerOrderByRelationAggregateInput
+  quotations?: Prisma.QuotationOrderByRelationAggregateInput
+  invoices?: Prisma.InvoiceOrderByRelationAggregateInput
+  expenses?: Prisma.ExpenseOrderByRelationAggregateInput
 }
 
 export type OrganizationWhereUniqueInput = Prisma.AtLeast<{
@@ -227,6 +233,9 @@ export type OrganizationWhereUniqueInput = Prisma.AtLeast<{
   updatedAt?: Prisma.DateTimeFilter<"Organization"> | Date | string
   memberships?: Prisma.MembershipListRelationFilter
   customers?: Prisma.CustomerListRelationFilter
+  quotations?: Prisma.QuotationListRelationFilter
+  invoices?: Prisma.InvoiceListRelationFilter
+  expenses?: Prisma.ExpenseListRelationFilter
 }, "id" | "slug">
 
 export type OrganizationOrderByWithAggregationInput = {
@@ -265,6 +274,9 @@ export type OrganizationCreateInput = {
   updatedAt?: Date | string
   memberships?: Prisma.MembershipCreateNestedManyWithoutOrganizationInput
   customers?: Prisma.CustomerCreateNestedManyWithoutOrganizationInput
+  quotations?: Prisma.QuotationCreateNestedManyWithoutOrganizationInput
+  invoices?: Prisma.InvoiceCreateNestedManyWithoutOrganizationInput
+  expenses?: Prisma.ExpenseCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUncheckedCreateInput = {
@@ -277,6 +289,9 @@ export type OrganizationUncheckedCreateInput = {
   updatedAt?: Date | string
   memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutOrganizationInput
   customers?: Prisma.CustomerUncheckedCreateNestedManyWithoutOrganizationInput
+  quotations?: Prisma.QuotationUncheckedCreateNestedManyWithoutOrganizationInput
+  invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutOrganizationInput
+  expenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUpdateInput = {
@@ -289,6 +304,9 @@ export type OrganizationUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   memberships?: Prisma.MembershipUpdateManyWithoutOrganizationNestedInput
   customers?: Prisma.CustomerUpdateManyWithoutOrganizationNestedInput
+  quotations?: Prisma.QuotationUpdateManyWithoutOrganizationNestedInput
+  invoices?: Prisma.InvoiceUpdateManyWithoutOrganizationNestedInput
+  expenses?: Prisma.ExpenseUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateInput = {
@@ -301,6 +319,9 @@ export type OrganizationUncheckedUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   memberships?: Prisma.MembershipUncheckedUpdateManyWithoutOrganizationNestedInput
   customers?: Prisma.CustomerUncheckedUpdateManyWithoutOrganizationNestedInput
+  quotations?: Prisma.QuotationUncheckedUpdateManyWithoutOrganizationNestedInput
+  invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutOrganizationNestedInput
+  expenses?: Prisma.ExpenseUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationCreateManyInput = {
@@ -396,6 +417,48 @@ export type OrganizationUpdateOneRequiredWithoutCustomersNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.OrganizationUpdateToOneWithWhereWithoutCustomersInput, Prisma.OrganizationUpdateWithoutCustomersInput>, Prisma.OrganizationUncheckedUpdateWithoutCustomersInput>
 }
 
+export type OrganizationCreateNestedOneWithoutQuotationsInput = {
+  create?: Prisma.XOR<Prisma.OrganizationCreateWithoutQuotationsInput, Prisma.OrganizationUncheckedCreateWithoutQuotationsInput>
+  connectOrCreate?: Prisma.OrganizationCreateOrConnectWithoutQuotationsInput
+  connect?: Prisma.OrganizationWhereUniqueInput
+}
+
+export type OrganizationUpdateOneRequiredWithoutQuotationsNestedInput = {
+  create?: Prisma.XOR<Prisma.OrganizationCreateWithoutQuotationsInput, Prisma.OrganizationUncheckedCreateWithoutQuotationsInput>
+  connectOrCreate?: Prisma.OrganizationCreateOrConnectWithoutQuotationsInput
+  upsert?: Prisma.OrganizationUpsertWithoutQuotationsInput
+  connect?: Prisma.OrganizationWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.OrganizationUpdateToOneWithWhereWithoutQuotationsInput, Prisma.OrganizationUpdateWithoutQuotationsInput>, Prisma.OrganizationUncheckedUpdateWithoutQuotationsInput>
+}
+
+export type OrganizationCreateNestedOneWithoutInvoicesInput = {
+  create?: Prisma.XOR<Prisma.OrganizationCreateWithoutInvoicesInput, Prisma.OrganizationUncheckedCreateWithoutInvoicesInput>
+  connectOrCreate?: Prisma.OrganizationCreateOrConnectWithoutInvoicesInput
+  connect?: Prisma.OrganizationWhereUniqueInput
+}
+
+export type OrganizationUpdateOneRequiredWithoutInvoicesNestedInput = {
+  create?: Prisma.XOR<Prisma.OrganizationCreateWithoutInvoicesInput, Prisma.OrganizationUncheckedCreateWithoutInvoicesInput>
+  connectOrCreate?: Prisma.OrganizationCreateOrConnectWithoutInvoicesInput
+  upsert?: Prisma.OrganizationUpsertWithoutInvoicesInput
+  connect?: Prisma.OrganizationWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.OrganizationUpdateToOneWithWhereWithoutInvoicesInput, Prisma.OrganizationUpdateWithoutInvoicesInput>, Prisma.OrganizationUncheckedUpdateWithoutInvoicesInput>
+}
+
+export type OrganizationCreateNestedOneWithoutExpensesInput = {
+  create?: Prisma.XOR<Prisma.OrganizationCreateWithoutExpensesInput, Prisma.OrganizationUncheckedCreateWithoutExpensesInput>
+  connectOrCreate?: Prisma.OrganizationCreateOrConnectWithoutExpensesInput
+  connect?: Prisma.OrganizationWhereUniqueInput
+}
+
+export type OrganizationUpdateOneRequiredWithoutExpensesNestedInput = {
+  create?: Prisma.XOR<Prisma.OrganizationCreateWithoutExpensesInput, Prisma.OrganizationUncheckedCreateWithoutExpensesInput>
+  connectOrCreate?: Prisma.OrganizationCreateOrConnectWithoutExpensesInput
+  upsert?: Prisma.OrganizationUpsertWithoutExpensesInput
+  connect?: Prisma.OrganizationWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.OrganizationUpdateToOneWithWhereWithoutExpensesInput, Prisma.OrganizationUpdateWithoutExpensesInput>, Prisma.OrganizationUncheckedUpdateWithoutExpensesInput>
+}
+
 export type OrganizationCreateWithoutMembershipsInput = {
   id?: string
   name: string
@@ -405,6 +468,9 @@ export type OrganizationCreateWithoutMembershipsInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   customers?: Prisma.CustomerCreateNestedManyWithoutOrganizationInput
+  quotations?: Prisma.QuotationCreateNestedManyWithoutOrganizationInput
+  invoices?: Prisma.InvoiceCreateNestedManyWithoutOrganizationInput
+  expenses?: Prisma.ExpenseCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUncheckedCreateWithoutMembershipsInput = {
@@ -416,6 +482,9 @@ export type OrganizationUncheckedCreateWithoutMembershipsInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   customers?: Prisma.CustomerUncheckedCreateNestedManyWithoutOrganizationInput
+  quotations?: Prisma.QuotationUncheckedCreateNestedManyWithoutOrganizationInput
+  invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutOrganizationInput
+  expenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationCreateOrConnectWithoutMembershipsInput = {
@@ -443,6 +512,9 @@ export type OrganizationUpdateWithoutMembershipsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   customers?: Prisma.CustomerUpdateManyWithoutOrganizationNestedInput
+  quotations?: Prisma.QuotationUpdateManyWithoutOrganizationNestedInput
+  invoices?: Prisma.InvoiceUpdateManyWithoutOrganizationNestedInput
+  expenses?: Prisma.ExpenseUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateWithoutMembershipsInput = {
@@ -454,6 +526,9 @@ export type OrganizationUncheckedUpdateWithoutMembershipsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   customers?: Prisma.CustomerUncheckedUpdateManyWithoutOrganizationNestedInput
+  quotations?: Prisma.QuotationUncheckedUpdateManyWithoutOrganizationNestedInput
+  invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutOrganizationNestedInput
+  expenses?: Prisma.ExpenseUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationCreateWithoutCustomersInput = {
@@ -465,6 +540,9 @@ export type OrganizationCreateWithoutCustomersInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   memberships?: Prisma.MembershipCreateNestedManyWithoutOrganizationInput
+  quotations?: Prisma.QuotationCreateNestedManyWithoutOrganizationInput
+  invoices?: Prisma.InvoiceCreateNestedManyWithoutOrganizationInput
+  expenses?: Prisma.ExpenseCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationUncheckedCreateWithoutCustomersInput = {
@@ -476,6 +554,9 @@ export type OrganizationUncheckedCreateWithoutCustomersInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutOrganizationInput
+  quotations?: Prisma.QuotationUncheckedCreateNestedManyWithoutOrganizationInput
+  invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutOrganizationInput
+  expenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutOrganizationInput
 }
 
 export type OrganizationCreateOrConnectWithoutCustomersInput = {
@@ -503,6 +584,9 @@ export type OrganizationUpdateWithoutCustomersInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   memberships?: Prisma.MembershipUpdateManyWithoutOrganizationNestedInput
+  quotations?: Prisma.QuotationUpdateManyWithoutOrganizationNestedInput
+  invoices?: Prisma.InvoiceUpdateManyWithoutOrganizationNestedInput
+  expenses?: Prisma.ExpenseUpdateManyWithoutOrganizationNestedInput
 }
 
 export type OrganizationUncheckedUpdateWithoutCustomersInput = {
@@ -514,6 +598,225 @@ export type OrganizationUncheckedUpdateWithoutCustomersInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   memberships?: Prisma.MembershipUncheckedUpdateManyWithoutOrganizationNestedInput
+  quotations?: Prisma.QuotationUncheckedUpdateManyWithoutOrganizationNestedInput
+  invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutOrganizationNestedInput
+  expenses?: Prisma.ExpenseUncheckedUpdateManyWithoutOrganizationNestedInput
+}
+
+export type OrganizationCreateWithoutQuotationsInput = {
+  id?: string
+  name: string
+  slug: string
+  currency?: string
+  timezone?: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  memberships?: Prisma.MembershipCreateNestedManyWithoutOrganizationInput
+  customers?: Prisma.CustomerCreateNestedManyWithoutOrganizationInput
+  invoices?: Prisma.InvoiceCreateNestedManyWithoutOrganizationInput
+  expenses?: Prisma.ExpenseCreateNestedManyWithoutOrganizationInput
+}
+
+export type OrganizationUncheckedCreateWithoutQuotationsInput = {
+  id?: string
+  name: string
+  slug: string
+  currency?: string
+  timezone?: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutOrganizationInput
+  customers?: Prisma.CustomerUncheckedCreateNestedManyWithoutOrganizationInput
+  invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutOrganizationInput
+  expenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutOrganizationInput
+}
+
+export type OrganizationCreateOrConnectWithoutQuotationsInput = {
+  where: Prisma.OrganizationWhereUniqueInput
+  create: Prisma.XOR<Prisma.OrganizationCreateWithoutQuotationsInput, Prisma.OrganizationUncheckedCreateWithoutQuotationsInput>
+}
+
+export type OrganizationUpsertWithoutQuotationsInput = {
+  update: Prisma.XOR<Prisma.OrganizationUpdateWithoutQuotationsInput, Prisma.OrganizationUncheckedUpdateWithoutQuotationsInput>
+  create: Prisma.XOR<Prisma.OrganizationCreateWithoutQuotationsInput, Prisma.OrganizationUncheckedCreateWithoutQuotationsInput>
+  where?: Prisma.OrganizationWhereInput
+}
+
+export type OrganizationUpdateToOneWithWhereWithoutQuotationsInput = {
+  where?: Prisma.OrganizationWhereInput
+  data: Prisma.XOR<Prisma.OrganizationUpdateWithoutQuotationsInput, Prisma.OrganizationUncheckedUpdateWithoutQuotationsInput>
+}
+
+export type OrganizationUpdateWithoutQuotationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  memberships?: Prisma.MembershipUpdateManyWithoutOrganizationNestedInput
+  customers?: Prisma.CustomerUpdateManyWithoutOrganizationNestedInput
+  invoices?: Prisma.InvoiceUpdateManyWithoutOrganizationNestedInput
+  expenses?: Prisma.ExpenseUpdateManyWithoutOrganizationNestedInput
+}
+
+export type OrganizationUncheckedUpdateWithoutQuotationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  memberships?: Prisma.MembershipUncheckedUpdateManyWithoutOrganizationNestedInput
+  customers?: Prisma.CustomerUncheckedUpdateManyWithoutOrganizationNestedInput
+  invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutOrganizationNestedInput
+  expenses?: Prisma.ExpenseUncheckedUpdateManyWithoutOrganizationNestedInput
+}
+
+export type OrganizationCreateWithoutInvoicesInput = {
+  id?: string
+  name: string
+  slug: string
+  currency?: string
+  timezone?: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  memberships?: Prisma.MembershipCreateNestedManyWithoutOrganizationInput
+  customers?: Prisma.CustomerCreateNestedManyWithoutOrganizationInput
+  quotations?: Prisma.QuotationCreateNestedManyWithoutOrganizationInput
+  expenses?: Prisma.ExpenseCreateNestedManyWithoutOrganizationInput
+}
+
+export type OrganizationUncheckedCreateWithoutInvoicesInput = {
+  id?: string
+  name: string
+  slug: string
+  currency?: string
+  timezone?: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutOrganizationInput
+  customers?: Prisma.CustomerUncheckedCreateNestedManyWithoutOrganizationInput
+  quotations?: Prisma.QuotationUncheckedCreateNestedManyWithoutOrganizationInput
+  expenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutOrganizationInput
+}
+
+export type OrganizationCreateOrConnectWithoutInvoicesInput = {
+  where: Prisma.OrganizationWhereUniqueInput
+  create: Prisma.XOR<Prisma.OrganizationCreateWithoutInvoicesInput, Prisma.OrganizationUncheckedCreateWithoutInvoicesInput>
+}
+
+export type OrganizationUpsertWithoutInvoicesInput = {
+  update: Prisma.XOR<Prisma.OrganizationUpdateWithoutInvoicesInput, Prisma.OrganizationUncheckedUpdateWithoutInvoicesInput>
+  create: Prisma.XOR<Prisma.OrganizationCreateWithoutInvoicesInput, Prisma.OrganizationUncheckedCreateWithoutInvoicesInput>
+  where?: Prisma.OrganizationWhereInput
+}
+
+export type OrganizationUpdateToOneWithWhereWithoutInvoicesInput = {
+  where?: Prisma.OrganizationWhereInput
+  data: Prisma.XOR<Prisma.OrganizationUpdateWithoutInvoicesInput, Prisma.OrganizationUncheckedUpdateWithoutInvoicesInput>
+}
+
+export type OrganizationUpdateWithoutInvoicesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  memberships?: Prisma.MembershipUpdateManyWithoutOrganizationNestedInput
+  customers?: Prisma.CustomerUpdateManyWithoutOrganizationNestedInput
+  quotations?: Prisma.QuotationUpdateManyWithoutOrganizationNestedInput
+  expenses?: Prisma.ExpenseUpdateManyWithoutOrganizationNestedInput
+}
+
+export type OrganizationUncheckedUpdateWithoutInvoicesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  memberships?: Prisma.MembershipUncheckedUpdateManyWithoutOrganizationNestedInput
+  customers?: Prisma.CustomerUncheckedUpdateManyWithoutOrganizationNestedInput
+  quotations?: Prisma.QuotationUncheckedUpdateManyWithoutOrganizationNestedInput
+  expenses?: Prisma.ExpenseUncheckedUpdateManyWithoutOrganizationNestedInput
+}
+
+export type OrganizationCreateWithoutExpensesInput = {
+  id?: string
+  name: string
+  slug: string
+  currency?: string
+  timezone?: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  memberships?: Prisma.MembershipCreateNestedManyWithoutOrganizationInput
+  customers?: Prisma.CustomerCreateNestedManyWithoutOrganizationInput
+  quotations?: Prisma.QuotationCreateNestedManyWithoutOrganizationInput
+  invoices?: Prisma.InvoiceCreateNestedManyWithoutOrganizationInput
+}
+
+export type OrganizationUncheckedCreateWithoutExpensesInput = {
+  id?: string
+  name: string
+  slug: string
+  currency?: string
+  timezone?: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  memberships?: Prisma.MembershipUncheckedCreateNestedManyWithoutOrganizationInput
+  customers?: Prisma.CustomerUncheckedCreateNestedManyWithoutOrganizationInput
+  quotations?: Prisma.QuotationUncheckedCreateNestedManyWithoutOrganizationInput
+  invoices?: Prisma.InvoiceUncheckedCreateNestedManyWithoutOrganizationInput
+}
+
+export type OrganizationCreateOrConnectWithoutExpensesInput = {
+  where: Prisma.OrganizationWhereUniqueInput
+  create: Prisma.XOR<Prisma.OrganizationCreateWithoutExpensesInput, Prisma.OrganizationUncheckedCreateWithoutExpensesInput>
+}
+
+export type OrganizationUpsertWithoutExpensesInput = {
+  update: Prisma.XOR<Prisma.OrganizationUpdateWithoutExpensesInput, Prisma.OrganizationUncheckedUpdateWithoutExpensesInput>
+  create: Prisma.XOR<Prisma.OrganizationCreateWithoutExpensesInput, Prisma.OrganizationUncheckedCreateWithoutExpensesInput>
+  where?: Prisma.OrganizationWhereInput
+}
+
+export type OrganizationUpdateToOneWithWhereWithoutExpensesInput = {
+  where?: Prisma.OrganizationWhereInput
+  data: Prisma.XOR<Prisma.OrganizationUpdateWithoutExpensesInput, Prisma.OrganizationUncheckedUpdateWithoutExpensesInput>
+}
+
+export type OrganizationUpdateWithoutExpensesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  memberships?: Prisma.MembershipUpdateManyWithoutOrganizationNestedInput
+  customers?: Prisma.CustomerUpdateManyWithoutOrganizationNestedInput
+  quotations?: Prisma.QuotationUpdateManyWithoutOrganizationNestedInput
+  invoices?: Prisma.InvoiceUpdateManyWithoutOrganizationNestedInput
+}
+
+export type OrganizationUncheckedUpdateWithoutExpensesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  memberships?: Prisma.MembershipUncheckedUpdateManyWithoutOrganizationNestedInput
+  customers?: Prisma.CustomerUncheckedUpdateManyWithoutOrganizationNestedInput
+  quotations?: Prisma.QuotationUncheckedUpdateManyWithoutOrganizationNestedInput
+  invoices?: Prisma.InvoiceUncheckedUpdateManyWithoutOrganizationNestedInput
 }
 
 
@@ -524,11 +827,17 @@ export type OrganizationUncheckedUpdateWithoutCustomersInput = {
 export type OrganizationCountOutputType = {
   memberships: number
   customers: number
+  quotations: number
+  invoices: number
+  expenses: number
 }
 
 export type OrganizationCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   memberships?: boolean | OrganizationCountOutputTypeCountMembershipsArgs
   customers?: boolean | OrganizationCountOutputTypeCountCustomersArgs
+  quotations?: boolean | OrganizationCountOutputTypeCountQuotationsArgs
+  invoices?: boolean | OrganizationCountOutputTypeCountInvoicesArgs
+  expenses?: boolean | OrganizationCountOutputTypeCountExpensesArgs
 }
 
 /**
@@ -555,6 +864,27 @@ export type OrganizationCountOutputTypeCountCustomersArgs<ExtArgs extends runtim
   where?: Prisma.CustomerWhereInput
 }
 
+/**
+ * OrganizationCountOutputType without action
+ */
+export type OrganizationCountOutputTypeCountQuotationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.QuotationWhereInput
+}
+
+/**
+ * OrganizationCountOutputType without action
+ */
+export type OrganizationCountOutputTypeCountInvoicesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.InvoiceWhereInput
+}
+
+/**
+ * OrganizationCountOutputType without action
+ */
+export type OrganizationCountOutputTypeCountExpensesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ExpenseWhereInput
+}
+
 
 export type OrganizationSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -566,6 +896,9 @@ export type OrganizationSelect<ExtArgs extends runtime.Types.Extensions.Internal
   updatedAt?: boolean
   memberships?: boolean | Prisma.Organization$membershipsArgs<ExtArgs>
   customers?: boolean | Prisma.Organization$customersArgs<ExtArgs>
+  quotations?: boolean | Prisma.Organization$quotationsArgs<ExtArgs>
+  invoices?: boolean | Prisma.Organization$invoicesArgs<ExtArgs>
+  expenses?: boolean | Prisma.Organization$expensesArgs<ExtArgs>
   _count?: boolean | Prisma.OrganizationCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["organization"]>
 
@@ -603,6 +936,9 @@ export type OrganizationOmit<ExtArgs extends runtime.Types.Extensions.InternalAr
 export type OrganizationInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   memberships?: boolean | Prisma.Organization$membershipsArgs<ExtArgs>
   customers?: boolean | Prisma.Organization$customersArgs<ExtArgs>
+  quotations?: boolean | Prisma.Organization$quotationsArgs<ExtArgs>
+  invoices?: boolean | Prisma.Organization$invoicesArgs<ExtArgs>
+  expenses?: boolean | Prisma.Organization$expensesArgs<ExtArgs>
   _count?: boolean | Prisma.OrganizationCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type OrganizationIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -613,6 +949,9 @@ export type $OrganizationPayload<ExtArgs extends runtime.Types.Extensions.Intern
   objects: {
     memberships: Prisma.$MembershipPayload<ExtArgs>[]
     customers: Prisma.$CustomerPayload<ExtArgs>[]
+    quotations: Prisma.$QuotationPayload<ExtArgs>[]
+    invoices: Prisma.$InvoicePayload<ExtArgs>[]
+    expenses: Prisma.$ExpensePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1018,6 +1357,9 @@ export interface Prisma__OrganizationClient<T, Null = never, ExtArgs extends run
   readonly [Symbol.toStringTag]: "PrismaPromise"
   memberships<T extends Prisma.Organization$membershipsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organization$membershipsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MembershipPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   customers<T extends Prisma.Organization$customersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organization$customersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CustomerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  quotations<T extends Prisma.Organization$quotationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organization$quotationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$QuotationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  invoices<T extends Prisma.Organization$invoicesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organization$invoicesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$InvoicePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  expenses<T extends Prisma.Organization$expensesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Organization$expensesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ExpensePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1492,6 +1834,78 @@ export type Organization$customersArgs<ExtArgs extends runtime.Types.Extensions.
   take?: number
   skip?: number
   distinct?: Prisma.CustomerScalarFieldEnum | Prisma.CustomerScalarFieldEnum[]
+}
+
+/**
+ * Organization.quotations
+ */
+export type Organization$quotationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Quotation
+   */
+  select?: Prisma.QuotationSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Quotation
+   */
+  omit?: Prisma.QuotationOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.QuotationInclude<ExtArgs> | null
+  where?: Prisma.QuotationWhereInput
+  orderBy?: Prisma.QuotationOrderByWithRelationInput | Prisma.QuotationOrderByWithRelationInput[]
+  cursor?: Prisma.QuotationWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.QuotationScalarFieldEnum | Prisma.QuotationScalarFieldEnum[]
+}
+
+/**
+ * Organization.invoices
+ */
+export type Organization$invoicesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Invoice
+   */
+  select?: Prisma.InvoiceSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Invoice
+   */
+  omit?: Prisma.InvoiceOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.InvoiceInclude<ExtArgs> | null
+  where?: Prisma.InvoiceWhereInput
+  orderBy?: Prisma.InvoiceOrderByWithRelationInput | Prisma.InvoiceOrderByWithRelationInput[]
+  cursor?: Prisma.InvoiceWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.InvoiceScalarFieldEnum | Prisma.InvoiceScalarFieldEnum[]
+}
+
+/**
+ * Organization.expenses
+ */
+export type Organization$expensesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Expense
+   */
+  select?: Prisma.ExpenseSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Expense
+   */
+  omit?: Prisma.ExpenseOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ExpenseInclude<ExtArgs> | null
+  where?: Prisma.ExpenseWhereInput
+  orderBy?: Prisma.ExpenseOrderByWithRelationInput | Prisma.ExpenseOrderByWithRelationInput[]
+  cursor?: Prisma.ExpenseWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ExpenseScalarFieldEnum | Prisma.ExpenseScalarFieldEnum[]
 }
 
 /**
